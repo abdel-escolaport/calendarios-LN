@@ -45,7 +45,8 @@ div[class^="MuiBox-root"] {
   fill: #aecfd7;
 }
 
-.jss1, .jss3 {
+div[class*="jss"],
+div[class^="jss"]{
   background-color: #499bb1 !important;
   height: 3px;
 }
