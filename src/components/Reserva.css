@@ -1,0 +1,30 @@
+.resumen__container {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.resumen__container h3 {
+  color: #7d7d7d;
+  font-size: 1rem;
+}
+
+.resumen__container h2 {
+  font-size: 1.4rem;
+  margin: 10px 0;
+}
+
+.reserva__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reserva__quantity {
+  display: flex;
+  align-items: center;
+}
+
+.reserva__number {
+  font-weight: bold;
+  font-size: 1.1rem;
+}

@@ -1,0 +1,32 @@
+.menu-item {
+  padding: 0 40px;
+  margin: 5px 10px;
+  user-select: none;
+  cursor: pointer;
+  border: 1px transparent solid;
+}
+.menu-item-wrapper {
+  border: 1px transparent solid;
+}
+
+.menu-item {
+  border: 1px #828282 solid;
+  color: #828282;
+  border-radius: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.menu-item.active {
+  border: 1px solid #499bb1;
+  color: white;
+  background: #499bb1;
+}
+
+.scroll-menu-arrow {
+  padding: 20px;
+  cursor: pointer;
+}
+
+.scroll-menu-arrow--disabled {
+  visibility: hidden;
+}

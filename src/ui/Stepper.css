@@ -1,0 +1,46 @@
+.MuiStepper-alternativeLabel {
+  background-color: #f1f1f1 !important;
+  border-bottom: 1px solid #828282;
+  border-top: 1px solid #828282;
+  padding: 18px 0 15px 0px;
+}
+
+span[class*="MuiTypography-body"],
+div[class^="MuiBox-root"] {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.MuiStepIcon-root.MuiStepIcon-active {
+  fill: white;
+  border: 2px solid #499bb1 !important;
+  border-radius: 50%;
+}
+
+.MuiStepLabel-iconContainer .MuiStepIcon-text {
+  fill: #499bb1;
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.MuiStepLabel-iconContainer .MuiStepIcon-root {
+  color: #f7f7f7;
+  border-radius: 50%;
+}
+
+.MuiSvgIcon-root.MuiStepIcon-root.MuiStepIcon-active .MuiStepIcon-text {
+  fill: #499bb1 !important;
+}
+
+.MuiSvgIcon-root.MuiStepIcon-root.MuiStepIcon-completed {
+  color: #499bb1 !important;
+  border: none !important;
+}
+
+.MuiSvgIcon-root.MuiStepIcon-root[focusable="false"] {
+  border: 2px solid #aecfd7;
+}
+
+.MuiSvgIcon-root.MuiStepIcon-root[focusable="false"] .MuiStepIcon-text {
+  fill: #aecfd7;
+}

@@ -1,0 +1,37 @@
+.curso__cursoContainer {
+  padding: 40px 10px 20px 10px;
+  border-bottom: 1px solid #0000002b;
+  margin: auto;
+  width: 90%;
+}
+.curso__curso {
+  display: flex;
+  justify-content: space-between;
+}
+
+.curso__checkboxContainer {
+  display: flex;
+  align-items: center;
+}
+
+.curso__infoTitle {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.curso__checkboxContainer .curso__checkboxIncluir {
+  margin-right: 10px;
+  margin-top: 8px;
+}
+
+.curso__bottomIcons {
+  display: flex;
+  margin-top: 15px;
+}
+
+.curso__bottom {
+  margin: auto;
+  width: 90%;
+  margin-top: 35px;
+  justify-content: flex-end !important;
+}

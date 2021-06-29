@@ -1,0 +1,30 @@
+.header__top {
+  display: flex;
+  padding: 10px;
+  position: relative;
+  vertical-align: middle;
+}
+
+.header__title {
+  padding-left: 1em;
+  margin: auto;
+}
+
+.header__title h3 {
+  font-size: 16px;
+  padding-left: 10px;
+  font-weight: 400;
+}
+
+.header__title span {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.header__iconContainer {
+  margin: auto;
+}
+
+.header__iconContainer .MuiIconButton-root {
+  color: black;
+}

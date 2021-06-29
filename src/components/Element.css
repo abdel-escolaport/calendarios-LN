@@ -1,0 +1,159 @@
+.MuiTab-root {
+  font-size: 1rem;
+  font-weight: 600 !important;
+  text-transform: none;
+}
+
+.MuiAppBar-colorPrimary {
+  color: #272727;
+  background-color: white;
+  font-size: 20px;
+}
+
+.MuiPaper-elevation4 {
+  box-shadow: none !important;
+}
+
+span[class*="PrivateTabIndicator-colorSecondary"],
+span[class^="PrivateTabIndicator-colorSecondary"] {
+  background-color: #499bb1 !important;
+}
+
+.MuiBox-root-5 {
+  padding: 0;
+}
+
+div[class*="MuiBox-root"],
+div[class^="MuiBox-root"] {
+  padding: 0;
+}
+
+.element__element {
+  font-weight: 400;
+  padding: 10px;
+  border-bottom: 2px solid #828282;
+}
+.element__tab {
+  overflow: auto;
+}
+
+.element__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.element__selectionarEliminar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.element__selectionarEliminar button {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+.element__selectionarEliminar > p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #a9a9a9;
+}
+
+.element__plazasQuedan {
+  color: #ec6568;
+  font-weight: 600;
+}
+
+.element__date {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.element__hours {
+  font-size: 1.2rem;
+}
+
+.element__bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.element__icons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.element__icons > div {
+  margin-right: 10px;
+  font-weight: 20px;
+}
+
+.element__icons button {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+.element__counter {
+  font-size: 20px;
+  color: #4c4c4c;
+  font-weight: 600;
+}
+
+.element__buttonsContainer {
+  display: flex;
+}
+
+.element__volverContainer button,
+.element__borrarContainer button {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  outline: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  font-size: 1rem;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+}
+
+.element__continueContainer button {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: 1px solid #499bb1;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: #499bb1;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 7px;
+  margin-right: 8px;
+}
+
+.element__disable {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.element__borrarContainer {
+  display: flex;
+  align-items: flex-end;
+}
+
+.element__borrarContainer button {
+  margin-left: auto;
+  color: #499bb1;
+  padding: 10px 0;
+  margin-top: 10px;
+}
