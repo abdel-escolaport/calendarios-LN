@@ -158,8 +158,8 @@ div[class^="MuiBox-root"] {
   margin-top: 10px;
 }
 
-.MuiTabs-flexContainer div[class*="jss"],
-.MuiTabs-flexContainer div[class^="jss"] {
+.MuiTabs-scroller div[class*="jss"],
+.MuiTabs-scroller div[class^="jss"] {
   background-color: #499bb1 !important;
   height: 3px;
 }
