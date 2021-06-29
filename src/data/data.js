@@ -39,7 +39,7 @@ export const CURSOS = [
         teoria: {
           fechas: [
             {
-              fecha: "Junio 6 entre_semana",
+              fecha: "Junio entre_semana",
               horario: "10:00 a 14:00",
               plazas: 3,
               agenda: null,
