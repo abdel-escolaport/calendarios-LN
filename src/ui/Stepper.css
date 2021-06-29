@@ -1,7 +1,7 @@
 .MuiStepper-alternativeLabel {
   background-color: #f1f1f1 !important;
-  border-bottom: 1px solid #828282;
-  border-top: 1px solid #828282;
+  border-bottom: 1px solid #82828285;
+  border-top: 1px solid #82828285;
   padding: 18px 0 15px 0px;
 }
 
@@ -43,4 +43,8 @@ div[class^="MuiBox-root"] {
 
 .MuiSvgIcon-root.MuiStepIcon-root[focusable="false"] .MuiStepIcon-text {
   fill: #aecfd7;
+}
+
+.jss1, .jss3 {
+  background-color: #499bb1 !important;
 }

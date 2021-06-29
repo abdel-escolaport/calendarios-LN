@@ -31,7 +31,7 @@ div[class^="MuiBox-root"] {
 .element__element {
   font-weight: 400;
   padding: 10px;
-  border-bottom: 2px solid #828282;
+  border-bottom: 2px solid #82828254
 }
 .element__tab {
   overflow: auto;
