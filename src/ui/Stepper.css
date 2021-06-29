@@ -44,9 +44,3 @@ div[class^="MuiBox-root"] {
 .MuiSvgIcon-root.MuiStepIcon-root[focusable="false"] .MuiStepIcon-text {
   fill: #aecfd7;
 }
-
-div[class*="jss"],
-div[class^="jss"]{
-  background-color: #499bb1 !important;
-  height: 3px;
-}
