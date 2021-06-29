@@ -9,3 +9,7 @@
   justify-content: flex-end !important;
 }
 
+.jss1, .jss3, .jss6, .jss8, .jss11, .js13 {
+  background-color: #499bb1 !important;
+  height: 3px;
+}

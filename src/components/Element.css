@@ -157,8 +157,3 @@ div[class^="MuiBox-root"] {
   padding: 10px 0;
   margin-top: 10px;
 }
-
-div[class*="jss"],
-div[class^="jss"] {
-  background-color: #499bb1 !important;
-}
