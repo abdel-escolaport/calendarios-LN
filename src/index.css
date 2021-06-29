@@ -9,7 +9,7 @@
   justify-content: flex-end !important;
 }
 
-.jss6, .jss8, .jss11, .js13 {
+div[class*="jss"], div[class^="jss"] {
   background-color: #499bb1 !important;
   height: 3px;
 }
