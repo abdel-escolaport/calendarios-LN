@@ -8,3 +8,8 @@
 .flex-end {
   justify-content: flex-end !important;
 }
+
+span[class*="jss"],
+span[class^="jss"] {
+  background-color: #499bb1;
+}
