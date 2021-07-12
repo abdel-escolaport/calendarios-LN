@@ -7,7 +7,6 @@ const toggleSlice = createSlice({
     showModal: false,
     disableFechaDespues: false,
     disableElements: false,
-    showVolverButton: true,
   },
   reducers: {
     disableClass(state, action) {
@@ -21,9 +20,6 @@ const toggleSlice = createSlice({
     },
     disableElements(state, action) {
       state.disableElements = action.payload;
-    },
-    setShowVolverButton(state, action) {
-      state.showVolverButton = action.payload;
     },
   },
 });

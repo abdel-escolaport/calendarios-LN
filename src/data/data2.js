@@ -1,6 +1,6 @@
-export const CURSOS = [
+export const CURSOS2 = [
   {
-    7: {
+    "072021": {
       entresemana: {
         practicas: {
           fechas: [
@@ -131,13 +131,249 @@ export const CURSOS = [
         },
       },
     },
-    8: {
+    "082021": {
       entresemana: {
         practicas: {
           fechas: [
             {
               id: 19,
               fecha: "xd, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 20,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 21,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 22,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+          ],
+        },
+        teoria: {
+          fechas: [
+            {
+              id: 23,
+              fecha: "Julio entre_semana",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 24,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 25,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 26,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+          ],
+        },
+      },
+      findesemana: {
+        practicas: {
+          fechas: [
+            {
+              id: 27,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 28,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 29,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 30,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+          ],
+        },
+        teoria: {
+          fechas: [
+            {
+              id: 30,
+              fecha: "Mié, 00 sept. fin semana",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 31,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 32,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 33,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+          ],
+        },
+      },
+    },
+    "012022": {
+      entresemana: {
+        practicas: {
+          fechas: [
+            {
+              id: 19,
+              fecha: "Enero 2022",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 20,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 21,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 22,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+          ],
+        },
+        teoria: {
+          fechas: [
+            {
+              id: 23,
+              fecha: "Julio entre_semana",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 24,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 25,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 26,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+          ],
+        },
+      },
+      findesemana: {
+        practicas: {
+          fechas: [
+            {
+              id: 27,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 28,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 29,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 30,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+          ],
+        },
+        teoria: {
+          fechas: [
+            {
+              id: 30,
+              fecha: "Mié, 00 sept. fin semana",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 31,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 32,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+            {
+              id: 33,
+              fecha: "Mié, 00 sept.",
+              horario: "10:00 a 14:00",
+              plazas: 3,
+            },
+          ],
+        },
+      },
+    },
+    "022022": {
+      entresemana: {
+        practicas: {
+          fechas: [
+            {
+              id: 19,
+              fecha: "Febrero 2022",
               horario: "10:00 a 14:00",
               plazas: 3,
             },

@@ -1,0 +1,23 @@
+.InfoExtras__container {
+  border: 1px solid #4c4c4cf7;
+  padding: 17px;
+  color: #4c4c4cf7;
+  margin: 30px auto;
+}
+
+.InfoExtras__container div {
+  width: 90%;
+  margin: auto;
+}
+
+.InfoExtras__container div:nth-of-type(1) {
+  border-bottom: 1px solid #8b8b8b8a;
+}
+
+.InfoExtras__container > div:nth-of-type(1) > p {
+  margin-bottom: 20px;
+}
+
+.InfoExtras__container > div:nth-of-type(2) > p {
+  margin-top: 20px;
+}

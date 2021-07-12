@@ -1,36 +1,27 @@
-import React, { useState, useEffect } from "react";
-import ScrollMenu from "react-horizontal-scrolling-menu";
-import "./Months.css";
-
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { dataActions } from "../store/data-slice";
 
 import { CURSOS } from "../data/data";
-const list = [
-  { id: 1, name: "Enero" },
-  { id: 2, name: "Febrero" },
-  { id: 3, name: "Marzo" },
-  { id: 4, name: "Abril" },
-  { id: 5, name: "Mayo" },
-  { id: 6, name: "Junio" },
-  { id: 7, name: "Julio" },
-  { id: 8, name: "Agosto" },
-  { id: 9, name: "Septiembre" },
-  { id: 10, name: "Octubre" },
-  { id: 11, name: "Noviembre" },
-  { id: 12, name: "Diciembre" },
-];
+import { CURSOS2 } from "../data/data2";
+
+import ScrollMenu from "react-horizontal-scrolling-menu";
+import "./Months.css";
 
 const MenuItem = ({ text, selected }) => {
   return <div className={`menu-item ${selected ? "active" : ""}`}>{text}</div>;
 };
 
 export const Menu = (list, selected) =>
-  list.map((el) => {
-    const { name } = el;
-
-    return <MenuItem text={name} key={name} selected={selected} />;
+  list.map((item) => {
+    return (
+      <MenuItem
+        text={item.month.name}
+        key={item.month.name}
+        selected={selected}
+      />
+    );
   });
 
 const Arrow = ({ text, className }) => {
@@ -81,10 +72,10 @@ const getMonthByNumber = () => {
       month = "Agosto";
       break;
     case 9:
-      month = "Octubre";
+      month = "Septiembre";
       break;
     case 10:
-      month = "Septiembre";
+      month = "Octubre";
       break;
     case 11:
       month = "Noviembre";
@@ -101,17 +92,88 @@ const getMonthByNumber = () => {
 const getData = (cursos) => {
   let months = [];
   for (const [key, value] of Object.entries(cursos)) {
-    if (key == 6) {
+    let month_num = parseInt(key.substring(0, 2));
+    if (month_num == 1) {
       months.push({
         month: {
-          name: "junio",
+          name: "Enero",
           value,
         },
       });
-    } else if (key == 7) {
+    } else if (month_num == 2) {
       months.push({
         month: {
-          name: "julio",
+          name: "Febrero",
+          value,
+        },
+      });
+    } else if (month_num == 3) {
+      months.push({
+        month: {
+          name: "Marzo",
+          value,
+        },
+      });
+    } else if (month_num == 4) {
+      months.push({
+        month: {
+          name: "Abril",
+          value,
+        },
+      });
+    } else if (month_num == 5) {
+      months.push({
+        month: {
+          name: "Mayo",
+          value,
+        },
+      });
+    } else if (month_num == 6) {
+      months.push({
+        month: {
+          name: "Junio",
+          value,
+        },
+      });
+    } else if (month_num == 7) {
+      months.push({
+        month: {
+          name: "Julio",
+          value,
+        },
+      });
+    } else if (month_num == 8) {
+      months.push({
+        month: {
+          name: "Agosto",
+          value,
+        },
+      });
+    } else if (month_num == 9) {
+      months.push({
+        month: {
+          name: "Septiembre",
+          value,
+        },
+      });
+    } else if (month_num == 10) {
+      months.push({
+        month: {
+          name: "Octubre",
+          value,
+        },
+      });
+    } else if (month_num == 11) {
+      months.push({
+        month: {
+          name: "Noviembre",
+          value,
+        },
+      });
+    } else if (month_num == 12) {
+      months.push({
+        month: {
+          name: "Deciembre",
           value,
         },
       });
@@ -122,32 +184,63 @@ const getData = (cursos) => {
 
 const Months = () => {
   const [selected, setselected] = useState(getMonthByNumber());
-  const [hideSingleArrow, sethideSingleArrow] = useState(true);
-
-  const newList = list.filter((e) => e.id >= getCurrentMonth()); //show all months starting from current month
-
-  const menu = Menu(newList, selected);
-
+  const [menu, setmenu] = useState([]);
+  const [calendarios, setCalendarios] = useState([]);
   const disableClass = useSelector((state) => state.toggle.disable);
-
   const dispatch = useDispatch();
 
-  getData(CURSOS[0]).forEach((e) => {
-    if (e.month.name == selected.toLowerCase()) {
-      dispatch(dataActions.applyData(e.month));
-    }
-  });
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const dataPracticas = await fetch(
+      "https://apicalendarios.escolaportbarcelona.com/recreo/v3/get_practicas_ln"
+    );
+
+    // const dataTeoria = await fetch(
+    //   "https://apicalendarios.escolaportbarcelona.com/recreo/v3/get_teorias_ln_sandbox"
+    // );
+
+    const dataTeoria = await fetch(
+      "https://apicalendarios.escolaportbarcelona.com/recreo/v3/get_teorias_ln"
+    );
+
+    const result_practicas = await dataPracticas.json();
+    const result_teoria = await dataTeoria.json();
+
+    const calendarios_data_practicas = getData(result_practicas);
+
+    setmenu(Menu(calendarios_data_practicas, selected));
+
+    setCalendarios(calendarios_data_practicas);
+
+    calendarios_data_practicas.forEach((e) => {
+      if (e.month.name == selected) {
+        dispatch(dataActions.applyDataPracticas(e.month));
+      }
+    });
+
+    dispatch(dataActions.applyDataTeoria(result_teoria));
+  };
+
   const onSelect = (key) => {
     setselected(key);
-    getData(CURSOS[0]).forEach((e) => {
-      if (e.month.name == key.toLowerCase()) {
-        dispatch(dataActions.applyData(e.month));
+    calendarios.forEach((e) => {
+      if (e.month.name == key) {
+        dispatch(dataActions.applyDataPracticas(e.month));
       }
     });
   };
 
   return (
-    <div className={disableClass ? "element__disable" : ""}>
+    <div
+      className={
+        disableClass
+          ? "months__container element__disable"
+          : "months__container"
+      }
+    >
       <ScrollMenu
         data={menu}
         arrowLeft={ArrowLeft}

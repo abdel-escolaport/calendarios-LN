@@ -11,9 +11,9 @@ import { useSelector } from "react-redux";
 
 const App = () => {
   const screen = useSelector((state) => state.screens.mainScreen);
-  const data = useSelector((state) => state.data.practicas);
-
-  console.log(data);
+  //  const practicas_data = useSelector((state) => state.data.data);
+  // const teoria_data = useSelector((state) => state.data.teoria);
+  // const extras_data = useSelector((state) => state.data.extras);
 
   let renderScreen;
 
@@ -32,6 +32,7 @@ const App = () => {
   return (
     <div className="container">
       <Header />
+
       {screen == "practicas" && <Months />}
       {renderScreen}
     </div>

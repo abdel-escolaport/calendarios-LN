@@ -1,22 +1,15 @@
-.resumen__container {
-  width: 90%;
-  margin: 20px auto;
-}
-
-.resumen__container h3 {
-  color: #7d7d7d;
-  font-size: 1rem;
-}
-
-.resumen__container h2 {
-  font-size: 1.4rem;
-  margin: 10px 0;
-}
-
 .reserva__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 24px 0;
+  align-items: center;
+}
+
+@media (max-width: 320px) {
+  .reserva__container {
+    margin: 12px 0;
+  }
 }
 
 .reserva__quantity {
@@ -27,4 +20,8 @@
 .reserva__number {
   font-weight: bold;
   font-size: 1.1rem;
+}
+
+.reserva__info > p {
+  font-weight: 600;
 }

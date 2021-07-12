@@ -1,4 +1,11 @@
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { dataActions } from "../store/data-slice";
+import { toggleActions } from "../store/toggle-slice";
+import { screenActions } from "../store/screens-slice";
+import { stepperActions } from "../store/stepper-slice";
+
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
@@ -7,44 +14,109 @@ import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 
 import "../components/Element.css";
 
-import { useSelector, useDispatch } from "react-redux";
+const formatDate = (fecha) => {
+  let fechas = fecha.split("/");
 
-import { dataActions } from "../store/data-slice";
-import { toggleActions } from "../store/toggle-slice";
-import { screenActions } from "../store/screens-slice";
-import { stepperActions } from "../store/stepper-slice";
+  let day = parseInt(fechas[0]);
+  let month = parseInt(fechas[1]);
+  let year = parseInt(fechas[2]);
 
-const Element = (props) => {
+  let date = `${year}-${month}-${day}`;
+
+  let d = new Date(date);
+
+  var options = {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  };
+
+  return d.toLocaleDateString("es-ES", options);
+};
+
+const Element = ({ data, screen, tipo = null, handleClass, classes }) => {
   const [toggleSelectButton, setToggleSelectButton] = useState(true);
   const [toggleBottomDiv, settoggleBottomDiv] = useState(false);
   const [personsNumber, setPersonsNumber] = useState(1);
-  const { fecha, horario, plazas } = props.data.item;
-  const id = props.data.idx;
-  const { screen, tipo } = props;
+  const { id, fecha, horario, plazas } = data.item;
 
   const disableElements = useSelector((state) => state.toggle.disableElements);
+
+  const practicas_data = useSelector((state) => state.data.practicas);
+  const teoria_data = useSelector((state) => state.data.teoria);
+
+  const elementoSeleccionadoEnPracticas = useSelector(
+    (state) => state.data.elementoSeleccionadoEnPracticas
+  );
+
+  const fechaDespuesValue = useSelector((state) => state.data.fechaDespues);
 
   const dispatch = useDispatch();
 
   dispatch(screenActions.setTipo(tipo));
 
+  const recoverSelectedValues = () => {
+    let num_personas;
+    let selectedeElement;
+    if (screen === "practicas") {
+      num_personas = practicas_data.personas;
+      selectedeElement = Object.values(practicas_data.data);
+    } else if (screen === "teoria") {
+      num_personas = teoria_data.personas;
+      selectedeElement = Object.values(teoria_data.data);
+    }
+    if (selectedeElement.length > 0) {
+      if (selectedeElement[0] == id) {
+        handleClass(selectedeElement[0]);
+        applyChanges(true, true);
+        setPersonsNumber(num_personas);
+      }
+    }
+  };
+
+  useEffect(() => {
+    recoverSelectedValues();
+  }, [practicas_data, teoria_data]);
+
   const handleSelect = () => {
-    props.handleClass(id);
-    setToggleSelectButton(!toggleSelectButton);
+    handleClass(id, tipo);
+    applyChanges(true, true);
 
-    dispatch(toggleActions.disableClass(true));
-
-    dispatch(toggleActions.disableFechaDespues(true));
-
-    settoggleBottomDiv(!toggleBottomDiv);
+    if (screen === "practicas") {
+      dispatch(dataActions.elementoSeleccionadoEnPracticas("con_fecha"));
+    } else if (screen === "teoria") {
+      dispatch(dataActions.elementoSeleccionadoEnTeoria("con_fecha"));
+    }
   };
 
   const handleRemove = () => {
-    props.handleClass(-1);
+    handleClass(-1);
+    applyChanges(false, false);
+    if (screen === "practicas") {
+      dispatch(dataActions.elementoSeleccionadoEnPracticas(""));
+      dispatch(
+        dataActions.applyPracticas({
+          personas: 1,
+          periodo: tipo,
+          data: {},
+        })
+      );
+    } else if (screen === "teoria") {
+      dispatch(dataActions.elementoSeleccionadoEnTeoria(""));
+      dispatch(
+        dataActions.applyTeoria({
+          personas: 1,
+          data: {},
+        })
+      );
+    }
+  };
+
+  const applyChanges = (disableClassValue, disableFechaDespuesValue) => {
     setToggleSelectButton(!toggleSelectButton);
 
-    dispatch(toggleActions.disableClass(false));
-    dispatch(toggleActions.disableFechaDespues(false));
+    dispatch(toggleActions.disableClass(disableClassValue));
+    dispatch(toggleActions.disableFechaDespues(disableFechaDespuesValue));
 
     settoggleBottomDiv(!toggleBottomDiv);
   };
@@ -59,10 +131,13 @@ const Element = (props) => {
 
   const handleNextScreen = () => {
     if (screen == "practicas") {
+      dispatch(dataActions.setFechaDespues(null));
       dispatch(
         dataActions.applyPracticas({
-          persons: personsNumber,
-          practica: {
+          personas: personsNumber,
+          periodo: tipo,
+          data: {
+            id,
             fecha,
             horario,
             plazas,
@@ -70,11 +145,21 @@ const Element = (props) => {
         })
       );
       dispatch(screenActions.setMainScreen("teoria"));
-      dispatch(toggleActions.disableClass(false));
       dispatch(stepperActions.setActiveStep(1));
     } else if (screen === "teoria") {
-      dispatch(stepperActions.setActiveStep(2));
+      dispatch(
+        dataActions.applyTeoria({
+          personas: personsNumber,
+          data: {
+            id,
+            fecha,
+            horario,
+            plazas,
+          },
+        })
+      );
       dispatch(screenActions.setMainScreen("extras"));
+      dispatch(stepperActions.setActiveStep(2));
     }
 
     dispatch(toggleActions.disableClass(false));
@@ -87,6 +172,29 @@ const Element = (props) => {
     dispatch(toggleActions.disableFechaDespues(false));
     dispatch(screenActions.setMainScreen("practicas"));
     dispatch(stepperActions.setActiveStep(0));
+
+    dispatch(dataActions.setFechaDespues(-1));
+
+    if (screen === "teoria") {
+      dispatch(dataActions.elementoSeleccionadoEnTeoria(""));
+    }
+
+    if (
+      fechaDespuesValue == 0 &&
+      elementoSeleccionadoEnPracticas == "sin_fecha"
+    ) {
+      dispatch(toggleActions.disableClass(true));
+      dispatch(toggleActions.disableElements(true));
+    }
+
+    if (screen === "teoria") {
+      dispatch(
+        dataActions.applyTeoria({
+          personas: 1,
+          data: {},
+        })
+      );
+    }
   };
 
   return (
@@ -94,14 +202,19 @@ const Element = (props) => {
       className={
         disableElements
           ? "element__element element__disable"
-          : `element__element${props.classes}`
+          : `element__element${classes}`
       }
     >
       <div className="element__top">
         <div className="element__info">
-          <p className="element__plazasQuedan">Quedan {plazas} plazas</p>
-          <p className="element__date">{fecha}</p>
-          <p className="element__hours">{horario}</p>
+          <p
+            className="element__plazasQuedan"
+            style={plazas > 3 ? { color: "green" } : {}}
+          >
+            Quedan {plazas} plazas
+          </p>
+          <p className="element__date">{formatDate(fecha)}</p>
+          <p className="element__hours">{`${horario[0]} a ${horario[1]}`}</p>
         </div>
         <div className="element__selecionarEliminarContainer">
           <div className="element__selectionarEliminar">

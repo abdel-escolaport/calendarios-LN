@@ -1,6 +1,4 @@
-import { useState } from "react";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import { useState, useEffect } from "react";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
@@ -10,9 +8,42 @@ import "./Element.css";
 
 import Checkbox from "react-simple-checkbox";
 
-const Extras = ({ id, title, price }) => {
+const Curso = ({
+  id,
+  title,
+  price,
+  checked,
+  quantity,
+  handleIncluir,
+  updateCourseQuantity,
+}) => {
   const [isChecked, setisChecked] = useState(false);
-  const [courseQuantity, setCourseQuantity] = useState(1);
+  const [courseQuantity, setCourseQuantity] = useState(null);
+
+  useEffect(() => {
+    if (checked) {
+      setisChecked(true);
+    } else {
+      setisChecked(false);
+    }
+
+    if (quantity) {
+      setCourseQuantity(quantity);
+    } else {
+      setCourseQuantity(1);
+    }
+  }, [checked, quantity]);
+
+  const handleOnChange = (e) => {
+    setisChecked(!isChecked);
+
+    handleIncluir(e, {
+      id,
+      title,
+      price,
+      courseQuantity: 1,
+    });
+  };
 
   return (
     <>
@@ -31,9 +62,8 @@ const Extras = ({ id, title, price }) => {
                 color="#499BB1"
                 tickAnimationDuration="100"
                 backAnimationDuration="100"
-                onChange={() => {
-                  setisChecked(!isChecked);
-                  console.log(id);
+                onChange={(e) => {
+                  handleOnChange(e);
                 }}
               />
             </div>
@@ -49,6 +79,12 @@ const Extras = ({ id, title, price }) => {
                 <button
                   onClick={() => {
                     setCourseQuantity(courseQuantity - 1);
+                    updateCourseQuantity({
+                      id,
+                      title,
+                      price,
+                      courseQuantity: courseQuantity - 1,
+                    });
                   }}
                   disabled={courseQuantity == 1}
                 >
@@ -60,6 +96,12 @@ const Extras = ({ id, title, price }) => {
                 <button
                   onClick={() => {
                     setCourseQuantity(courseQuantity + 1);
+                    updateCourseQuantity({
+                      id,
+                      title,
+                      price,
+                      courseQuantity: courseQuantity + 1,
+                    });
                   }}
                 >
                   <AddCircleOutlineIcon style={{ fontSize: 30 }} />
@@ -74,4 +116,4 @@ const Extras = ({ id, title, price }) => {
   );
 };
 
-export default Extras;
+export default Curso;

@@ -1,0 +1,51 @@
+.resumen__container {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.resumen__container h3 {
+  color: #7d7d7d;
+  font-size: 1rem;
+}
+
+.resumen__container h2 {
+  font-size: 1.4rem;
+  margin: 10px 0;
+}
+
+.resumen__logoContainer {
+  margin: auto;
+}
+
+.resumen__logoContainer img {
+  width: 80px;
+  padding: 5px 0 10px;
+  margin: auto;
+  display: block;
+}
+
+.resumen__popupParag {
+  width: 80%;
+  margin: 30px auto;
+  font-size: 1.1rem;
+}
+
+.resumen__popupButton {
+  margin: 0 auto;
+  cursor: pointer;
+  font-size: 20px;
+  background-color: #6a9bb0;
+  color: white !important;
+  display: block;
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+  transition: 300ms;
+  text-decoration: none !important;
+}
+
+.resumen__popupButton:hover {
+  background-color: white;
+  color: #6a9bb0 !important;
+  transition: 300ms;
+}
