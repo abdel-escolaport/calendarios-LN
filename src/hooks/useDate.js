@@ -1,3 +1,10 @@
+const isAppleDevice = () => {
+  if (navigator.userAgent.match(/(iPhone|iPod|iPad)/) != null) {
+    return true;
+  }
+  return false;
+};
+
 export const useDate = (fecha) => {
   let fechas = fecha.split("/");
 
@@ -5,7 +12,12 @@ export const useDate = (fecha) => {
   let month = parseInt(fechas[1]);
   let year = parseInt(fechas[2]);
 
-  let date = `${year}-${month}-${day}`;
+  let date;
+  if (isAppleDevice) {
+    date = `${year}-${month}-${day}`;
+  } else {
+    date = `${year}/${month}/${day}`;
+  }
 
   const meses = [
     "Enero",
