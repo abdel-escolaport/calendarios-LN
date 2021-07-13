@@ -14,6 +14,7 @@ import "../components/Resumen.css";
 import "../components/Reserva.css";
 import "../components/Element.css";
 
+import { decode } from "html-entities";
 import { extras_cursos } from "../data/ExtrasCursos";
 
 import PopPop from "react-poppop";
@@ -39,7 +40,7 @@ const Resumen = () => {
     let fecha_hora_teoria;
 
     if (teoria.data.message) {
-      fecha_hora_teoria = `&fecha_teoria=No hay teoría`;
+      fecha_hora_teoria = `&fecha_teoria=${decode(teoria.data.message)}`;
     } else {
       fecha_hora_teoria = `&fecha_teoria=${teoria.data.fecha} ${teoria.data.horario[0]} - ${teoria.data.horario[1]}`;
     }
