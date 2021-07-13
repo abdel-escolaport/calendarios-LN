@@ -39,7 +39,7 @@ const Resumen = () => {
     let fecha_hora_teoria;
 
     if (teoria.data.message) {
-      fecha_hora_teoria = `&fecha_teoria=No hay teoria`;
+      fecha_hora_teoria = `&fecha_teoria=No hay teoría`;
     } else {
       fecha_hora_teoria = `&fecha_teoria=${teoria.data.fecha} ${teoria.data.horario[0]} - ${teoria.data.horario[1]}`;
     }

@@ -27,12 +27,12 @@ function Modal() {
           <span>1 </span>Prácticas
         </h3>
         <p>
-          Seleciona una fecha en la que quieras hacer tus prácticas de
-          navegación de 4 hoeas de duración. Puede ser entre semana o en finde
+          Selecciona una fecha en la que quieras hacer tus prácticas de
+          navegación de 4 horas de duración. Puede ser entre semana o en fin de
           semana.
         </p>
         <h3>
-          <span>2 </span>Teoria
+          <span>2 </span>Teoría
         </h3>
         <p>
           Elige cuándo quieres hacer la formación teórica online. Puede ser
@@ -47,8 +47,8 @@ function Modal() {
           por 39€
           <br />
           <br />
-          Si quieres tu titulo en 72 horas, incluye la expedición express y lo
-          tendras un par de dias desupes de acabar el curso.
+          Si quieres tu título en 72 horas, incluye la expedición express y lo
+          tendrás un par de días después de acabar el curso.
         </p>
       </div>
     </div>

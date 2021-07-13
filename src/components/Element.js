@@ -211,7 +211,7 @@ const Element = ({ data, screen, tipo = null, handleClass, classes }) => {
             className="element__plazasQuedan"
             style={plazas > 3 ? { color: "green" } : {}}
           >
-            Quedan {plazas} plazas
+            Quedan {plazas} {plazas === 1 ? " plaza" : " plazas"}
           </p>
           <p className="element__date">{formatDate(fecha)}</p>
           <p className="element__hours">{`${horario[0]} a ${horario[1]}`}</p>

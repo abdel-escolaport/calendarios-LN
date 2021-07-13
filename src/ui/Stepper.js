@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import "./Stepper.css";
 
 export default function StepperComponent() {
-  const steps = ["Prácticas", "Teoria", "Extras", "Pago"];
+  const steps = ["Prácticas", "Teoría", "Extras", "Pago"];
 
   const activeStep = useSelector((state) => state.stepper.activeStep);
   return (

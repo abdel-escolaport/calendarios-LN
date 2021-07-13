@@ -3,6 +3,8 @@ import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import "./Reserva.css";
 import "./Element.css";
 
+import { decode } from "html-entities";
+
 const formatDate = (fecha) => {
   let fechas = fecha.split("/");
 
@@ -32,10 +34,10 @@ const Reserva = ({ data, title, personas, tipo = null }) => {
           <>
             {data.message ? (
               <>
-                <p>
-                  {data.message === "No hay teor&iacute;as"
-                    ? "No hay teorias"
-                    : data.message}
+                <p style={{ fontWeight: 400, width: "85%" }}>
+                  {data.message === ""
+                    ? "Estamos programando nuevas fechas, continua con el proceso y te enviaremos por correo las próximas fechas de clases teóricas de Licencia de navegación."
+                    : decode(data.message)}
                 </p>
               </>
             ) : (
@@ -43,7 +45,9 @@ const Reserva = ({ data, title, personas, tipo = null }) => {
                 {Object.keys(data).map((item, idx) => {
                   return (
                     <div key={idx}>
-                      <p>{item === "fecha" && formatDate(data[item])}</p>
+                      <p className="reserva__dateText">
+                        {item === "fecha" && formatDate(data[item])}
+                      </p>
                       <p>
                         {item === "horario" &&
                           data[item][0] + " a " + data[item][1]}

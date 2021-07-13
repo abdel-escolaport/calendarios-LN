@@ -9,17 +9,17 @@ const InfoExtras = () => {
           titulación.
         </p>
         <p>
-          Lo puedes obtener en uno de nuestros centros asociados en: Santas,
-          Badaladona, Horta y l'Hospitalet.
+          Lo puedes obtener en uno de nuestros centros asociados en: Sants,
+          Badalona, Horta y L'Hospitalet de LLobregat.
         </p>
         <p>Horario de atención: L-V: 9-13h y 16-19h</p>
       </div>
       <div>
         <p>
-          Con la expedición express tendrás tu Licencia de Navgación 48 horas
+          Con la expedición express tendrás tu Licencia de Navegación 48 horas
           después de acabar el curso.
         </p>
-        <p>El trámite de expedición de regular tarda 15 días hábiles.</p>
+        <p>El trámite de expedición regular tarda 15 días hábiles.</p>
       </div>
     </div>
   );

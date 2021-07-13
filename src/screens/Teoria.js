@@ -14,6 +14,8 @@ import { toggleActions } from "../store/toggle-slice";
 import { screenActions } from "../store/screens-slice";
 import { stepperActions } from "../store/stepper-slice";
 
+import { decode } from "html-entities";
+
 const Teoria = () => {
   const [classes, setClasses] = useState("");
   const [indxNum, setIndxNum] = useState(0);
@@ -67,7 +69,11 @@ const Teoria = () => {
         {typeof data === "string" ? (
           <>
             <div className="screen__messageContainer">
-              <h3>No hay teorias</h3>
+              <p>
+                {data == ""
+                  ? "Estamos programando nuevas fechas, continua con el proceso y te enviaremos por correo las próximas fechas de clases teóricas de Licencia de navegación."
+                  : decode(data)}
+              </p>
             </div>
             <div className="screen__buttonsContainer">
               <div className="element__buttonsContainer">

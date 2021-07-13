@@ -1,21 +1,3 @@
-.modal__bigContainer {
-  background-color: #444749de;
-  z-index: 10;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  overflow: hidden;
-}
-.modal__smallContainer {
-  background-color: white;
-  padding: 15px;
-  border-radius: 5px;
-  max-width: 90%;
-  margin: 1em auto;
-  position: relative;
-}
-
 .modal__smallContainer span {
   color: #4c9cb2;
   font-size: 40px;

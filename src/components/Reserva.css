@@ -25,3 +25,7 @@
 .reserva__info > p {
   font-weight: 600;
 }
+
+.reserva__dateText::first-letter {
+  text-transform: capitalize;
+}
