@@ -12,4 +12,5 @@
 span[class*="jss"],
 span[class^="jss"] {
   background-color: #499bb1;
+  height: 4px;
 }
