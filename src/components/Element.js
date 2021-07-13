@@ -12,27 +12,9 @@ import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 
+import { useDate } from "../hooks/useDate";
+
 import "../components/Element.css";
-
-const formatDate = (fecha) => {
-  let fechas = fecha.split("/");
-
-  let day = parseInt(fechas[0]);
-  let month = parseInt(fechas[1]);
-  let year = parseInt(fechas[2]);
-
-  let date = `${year}-${month}-${day}`;
-
-  let d = new Date(date);
-
-  var options = {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  };
-
-  return d.toLocaleDateString("es-ES", options);
-};
 
 const Element = ({ data, screen, tipo = null, handleClass, classes }) => {
   const [toggleSelectButton, setToggleSelectButton] = useState(true);
@@ -213,7 +195,7 @@ const Element = ({ data, screen, tipo = null, handleClass, classes }) => {
           >
             Quedan {plazas} {plazas === 1 ? " plaza" : " plazas"}
           </p>
-          <p className="element__date">{formatDate(fecha)}</p>
+          <p className="element__date">{useDate(fecha)}</p>
           <p className="element__hours">{`${horario[0]} a ${horario[1]}`}</p>
         </div>
         <div className="element__selecionarEliminarContainer">

@@ -3,29 +3,11 @@ import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import "./Reserva.css";
 import "./Element.css";
 
+import { useDate } from "../hooks/useDate";
+
 import { decode } from "html-entities";
 
-const formatDate = (fecha) => {
-  let fechas = fecha.split("/");
-
-  let day = parseInt(fechas[0]);
-  let month = parseInt(fechas[1]);
-  let year = parseInt(fechas[2]);
-
-  let date = `${year}-${month}-${day}`;
-
-  let d = new Date(date);
-
-  var options = {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  };
-
-  return d.toLocaleDateString("es-ES", options);
-};
-
-const Reserva = ({ data, title, personas, tipo = null }) => {
+const Reserva = ({ data, title, personas }) => {
   return (
     <div className="reserva__container">
       <div className="reserva__info">
@@ -46,7 +28,7 @@ const Reserva = ({ data, title, personas, tipo = null }) => {
                   return (
                     <div key={idx}>
                       <p className="reserva__dateText">
-                        {item === "fecha" && formatDate(data[item])}
+                        {item === "fecha" && useDate(data[item])}
                       </p>
                       <p>
                         {item === "horario" &&
