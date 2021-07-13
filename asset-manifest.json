@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/calendarios-LN/static/css/main.3acca7a9.chunk.css",
-    "main.js": "/calendarios-LN/static/js/main.328527b1.chunk.js",
-    "main.js.map": "/calendarios-LN/static/js/main.328527b1.chunk.js.map",
+    "main.css": "/calendarios-LN/static/css/main.6148e18c.chunk.css",
+    "main.js": "/calendarios-LN/static/js/main.20df7a13.chunk.js",
+    "main.js.map": "/calendarios-LN/static/js/main.20df7a13.chunk.js.map",
     "runtime-main.js": "/calendarios-LN/static/js/runtime-main.8ffc58e8.js",
     "runtime-main.js.map": "/calendarios-LN/static/js/runtime-main.8ffc58e8.js.map",
     "static/js/2.888439aa.chunk.js": "/calendarios-LN/static/js/2.888439aa.chunk.js",
     "static/js/2.888439aa.chunk.js.map": "/calendarios-LN/static/js/2.888439aa.chunk.js.map",
     "index.html": "/calendarios-LN/index.html",
-    "static/css/main.3acca7a9.chunk.css.map": "/calendarios-LN/static/css/main.3acca7a9.chunk.css.map",
+    "static/css/main.6148e18c.chunk.css.map": "/calendarios-LN/static/css/main.6148e18c.chunk.css.map",
     "static/js/2.888439aa.chunk.js.LICENSE.txt": "/calendarios-LN/static/js/2.888439aa.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8ffc58e8.js",
     "static/js/2.888439aa.chunk.js",
-    "static/css/main.3acca7a9.chunk.css",
-    "static/js/main.328527b1.chunk.js"
+    "static/css/main.6148e18c.chunk.css",
+    "static/js/main.20df7a13.chunk.js"
   ]
 }
