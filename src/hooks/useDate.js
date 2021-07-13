@@ -12,12 +12,7 @@ export const useDate = (fecha) => {
   let month = parseInt(fechas[1]);
   let year = parseInt(fechas[2]);
 
-  let date;
-  if (isAppleDevice) {
-    date = `${year}-${month}-${day}`;
-  } else {
-    date = `${year}/${month}/${day}`;
-  }
+  let date = `${month}-${day}-${year}`;
 
   const meses = [
     "Enero",
