@@ -63,8 +63,10 @@ const FechaDespues = ({ id, screen, periodo }) => {
 
   const handleSelect = () => {
     if (screen === "practicas") {
+      dispatch(screenActions.setScrollDivPracticas("#element_fechadespues"));
       dispatch(dataActions.elementoSeleccionadoEnPracticas("sin_fecha"));
     } else if (screen === "teoria") {
+      dispatch(screenActions.setScrollDivTeoria("#element_fechadespues"));
       dispatch(dataActions.elementoSeleccionadoEnTeoria("sin_fecha"));
     }
 
@@ -126,6 +128,7 @@ const FechaDespues = ({ id, screen, periodo }) => {
 
   const handleBackScreen = () => {
     dispatch(dataActions.elementoSeleccionadoEnTeoria(""));
+    dispatch(screenActions.setScrollDivTeoria(""));
 
     dispatch(dataActions.setFechaDespues(-1));
     dispatch(screenActions.setMainScreen("practicas"));
@@ -141,6 +144,7 @@ const FechaDespues = ({ id, screen, periodo }) => {
           ? `element__element element__disable`
           : `element__element`
       }
+      id="element_fechadespues"
     >
       <div className="element__top">
         <div className="element__info">

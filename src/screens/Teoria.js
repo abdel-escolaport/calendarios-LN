@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -19,10 +19,31 @@ import { decode } from "html-entities";
 const Teoria = () => {
   const [classes, setClasses] = useState("");
   const [indxNum, setIndxNum] = useState(0);
+  const scrolldiv = useSelector((state) => state.screens.scrollDivTeoria);
 
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.data.dataTeoria);
+
+  useEffect(() => {
+    scrollTo();
+    return () => {
+      window.scrollTo(0, 0);
+    };
+  }, []);
+
+  const scrollTo = () => {
+    if (scrolldiv) {
+      const section = document.querySelector(scrolldiv);
+      if (scrolldiv === "#element_fechadespues") {
+        window.scrollTo(0, 0);
+      } else {
+        section.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    }
+  };
 
   const handleClass = (value, periodo) => {
     setIndxNum(value);
@@ -50,8 +71,8 @@ const Teoria = () => {
     dispatch(toggleActions.disableClass(false));
     dispatch(toggleActions.disableFechaDespues(false));
     dispatch(screenActions.setMainScreen("practicas"));
+    dispatch(screenActions.setScrollDivTeoria(""));
     dispatch(stepperActions.setActiveStep(0));
-
     dispatch(dataActions.setFechaDespues(-1));
     dispatch(dataActions.setFechaDespues(-1));
     dispatch(

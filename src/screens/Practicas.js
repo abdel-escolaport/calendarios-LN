@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useSelector } from "react-redux";
 
 import AppBar from "@material-ui/core/AppBar";
@@ -64,11 +64,17 @@ export default function Practicas(props) {
   const data = useSelector((state) => state.data.dataPracticas);
   const periodo = useSelector((state) => state.data.practicas.periodo);
   const disableClass = useSelector((state) => state.toggle.disable);
+  const scrolldiv = useSelector((state) => state.screens.scrollDivPracticas);
 
   const practicas_entresemana = data.value.entresemana;
   const practicas_findesemana = data.value.findesemana;
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    scrollTo();
+    return () => {
+      window.scrollTo(0, 0);
+    };
+  }, []);
 
   useEffect(() => {
     if (practicas_entresemana.length > 0) {
@@ -80,11 +86,25 @@ export default function Practicas(props) {
     }
   }, [periodo]);
 
+  const scrollTo = () => {
+    if (scrolldiv) {
+      const section = document.querySelector(scrolldiv);
+      if (scrolldiv === "#element_fechadespues") {
+        window.scrollTo(0, 0);
+      } else {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
+    }
+  };
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const handleClass = (value, periodo) => {
+  const handleClass = (value, periodo, element) => {
     setIndxNum(value);
     if (value > 0) {
       setClasses(" element__disable");
@@ -113,9 +133,8 @@ export default function Practicas(props) {
                 <LinkTab label="Fin de semana" {...a11yProps(1)} />
               </Tabs>
             </AppBar>
-            <Stepper />
           </div>
-
+          <Stepper />
           <TabPanel value={value} index={0}>
             <div className="element__tab">
               <FechaDespues
@@ -136,6 +155,7 @@ export default function Practicas(props) {
                         classes=""
                         screen="practicas"
                         tipo="entre_semana"
+                        scrollTo={scrollTo}
                       />
                     );
                   } else {
@@ -148,6 +168,7 @@ export default function Practicas(props) {
                         classes={classes}
                         screen="practicas"
                         tipo="entre_semana"
+                        scrollTo={scrollTo}
                       />
                     );
                   }
@@ -173,6 +194,7 @@ export default function Practicas(props) {
                     classes=""
                     screen="practicas"
                     tipo="fin_semana"
+                    scrollTo={scrollTo}
                   />
                 );
               } else {
@@ -185,6 +207,7 @@ export default function Practicas(props) {
                     classes={classes}
                     screen="practicas"
                     tipo="fin_semana"
+                    scrollTo={scrollTo}
                   />
                 );
               }

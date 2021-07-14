@@ -3,9 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { dataActions } from "../store/data-slice";
 
-import { CURSOS } from "../data/data";
-import { CURSOS2 } from "../data/data2";
-
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import "./Months.css";
 
@@ -198,13 +195,25 @@ const Months = () => {
       "https://apicalendarios.escolaportbarcelona.com/recreo/v3/get_practicas_ln"
     );
 
+    //SANDOBX
+
     // const dataTeoria = await fetch(
     //   "https://apicalendarios.escolaportbarcelona.com/recreo/v3/get_teorias_ln_sandbox"
     // );
 
     const dataTeoria = await fetch(
-      "https://apicalendarios.escolaportbarcelona.com/recreo/v3/get_teorias_ln"
+      "https://apicalendarios.escolaportbarcelona.com/recreo/v3/get_teorias_pr_ln_sandbox"
     );
+
+    //-------------------------------------------------------------------------------------
+
+    // const dataTeoria = await fetch(
+    //   "https://apicalendarios.escolaportbarcelona.com/recreo/v3/get_teorias_ln"
+    // );
+
+    // const dataTeoria = await fetch(
+    //   "https://apicalendarios.escolaportbarcelona.com/recreo/v3/get_teorias_pr_ln"
+    // );
 
     const result_practicas = await dataPracticas.json();
     const result_teoria = await dataTeoria.json();

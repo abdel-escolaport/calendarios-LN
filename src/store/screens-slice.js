@@ -5,6 +5,8 @@ const screensSlice = createSlice({
   initialState: {
     mainScreen: "practicas",
     tipo: "",
+    scrollDivPracticas: "",
+    scrollDivTeoria: "",
   },
   reducers: {
     setMainScreen(state, action) {
@@ -12,6 +14,12 @@ const screensSlice = createSlice({
     },
     setTipo(state, action) {
       state.tipo = action.payload;
+    },
+    setScrollDivPracticas(state, action) {
+      state.scrollDivPracticas = action.payload;
+    },
+    setScrollDivTeoria(state, action) {
+      state.scrollDivTeoria = action.payload;
     },
   },
 });

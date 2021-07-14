@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { dataActions } from "../store/data-slice";
@@ -16,7 +16,14 @@ import { useDate } from "../hooks/useDate";
 
 import "../components/Element.css";
 
-const Element = ({ data, screen, tipo = null, handleClass, classes }) => {
+const Element = ({
+  data,
+  screen,
+  tipo = null,
+  handleClass,
+  classes,
+  scrollTo,
+}) => {
   const [toggleSelectButton, setToggleSelectButton] = useState(true);
   const [toggleBottomDiv, settoggleBottomDiv] = useState(false);
   const [personsNumber, setPersonsNumber] = useState(1);
@@ -32,6 +39,8 @@ const Element = ({ data, screen, tipo = null, handleClass, classes }) => {
   );
 
   const fechaDespuesValue = useSelector((state) => state.data.fechaDespues);
+
+  const myref = useRef();
 
   const dispatch = useDispatch();
 
@@ -61,6 +70,11 @@ const Element = ({ data, screen, tipo = null, handleClass, classes }) => {
   }, [practicas_data, teoria_data]);
 
   const handleSelect = () => {
+    if (screen === "practicas") {
+      dispatch(screenActions.setScrollDivPracticas(`#element_${id}`));
+    } else if (screen === "teoria") {
+      dispatch(screenActions.setScrollDivTeoria(`#element_${id}`));
+    }
     handleClass(id, tipo);
     applyChanges(true, true);
 
@@ -154,7 +168,7 @@ const Element = ({ data, screen, tipo = null, handleClass, classes }) => {
     dispatch(toggleActions.disableFechaDespues(false));
     dispatch(screenActions.setMainScreen("practicas"));
     dispatch(stepperActions.setActiveStep(0));
-
+    dispatch(screenActions.setScrollDivTeoria(""));
     dispatch(dataActions.setFechaDespues(-1));
 
     if (screen === "teoria") {
@@ -186,6 +200,7 @@ const Element = ({ data, screen, tipo = null, handleClass, classes }) => {
           ? "element__element element__disable"
           : `element__element${classes}`
       }
+      id={`element_${id}`}
     >
       <div className="element__top">
         <div className="element__info">
